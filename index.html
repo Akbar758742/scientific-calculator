@@ -2,139 +2,115 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>scientific cal</title>
-    <link rel="stylesheet" type="text/css"
-        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neumorphism Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
 </head>
 
+<body class="flex items-center justify-center min-h-screen bg-gray- select-none">
 
-<body>
-
-    <div class="container">
-        <div class="display">
-            <input id="screen" type="text" placeholder="0">
-        </div>
-
-        <div class="btns">
-            <div class="row">
-                <button id="ce" onclick="backspc()">CE</button>
-                <button onclick="fact()">x!</button>
-                <button class="btn">(</button>
-                <button class="btn">)</button>
-                <button class="btn">%</button>
-                <button id="ac" onclick="screen.value=''">AC</button>
-            </div>
-
-            <div class="row">
-                <button onclick="sin()">sin</button>
-                <button onclick="pi()">π</button>
-                <button class="btn">7</button>
-                <button class="btn">8</button>
-                <button class="btn">9</button>
-                <button class="btn">÷</button>
-            </div>
-
-            <div class="row">
-                <button onclick="cos()">cos</button>
-                <button onclick="log()">log</button>
-                <button class="btn">4</button>
-                <button class="btn">5</button>
-                <button class="btn">6</button>
-                <button class="btn">×</button>
-            </div>
-
-            <div class="row">
-                <button onclick="tan()">tan</button>
-                <button onclick="sqrt()">√</button>
-                <button class="btn">1</button>
-                <button class="btn">2</button>
-                <button class="btn">3</button>
-                <button class="btn">-</button>
-            </div>
-
-            <div class="row">
-                <button onclick="e()">e</button>
-                <button onclick="pow()">x <span style="position: relative; bottom: .4em; right: .1em;">y</span>
-                </button>
-                <button class="btn">0</button>
-                <button class="btn">.</button>
-                <button id="eval" onclick="screen.value=eval(screen.value)">=</button>
-                <button class="btn">+</button>
-            </div>
-        </div>
+  <div class="container mx-auto p-5 rounded-lg shadow-lg bg-gray-200 max-w-lg">
+    <div class="display mb-4">
+      <input id="screen" type="text" placeholder="0"
+        class="w-full h-16 text-right text-2xl p-2 rounded-lg shadow-inner bg-gray-200 outline-none">
     </div>
+
+    <div class="btns space-y-4 w-full">
+      <!-- Row 1 -->
+      <div class="row flex space-x-2">
+        <button id="ce" onclick="backspc()"
+          class="w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-pink-400 text-white hover:shadow-inner">CE</button>
+        <button onclick="fact()"
+          class="w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">x!</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">(</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">)</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">%</button>
+        <button id="ac" onclick="clearScreen()"
+          class="w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-green-400 text-white hover:shadow-inner">AC</button>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="row flex space-x-2">
+        <button onclick="sin()"
+          class="w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">sin</button>
+        <button onclick="pi()"
+          class="w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">π</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">7</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">8</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">9</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">÷</button>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="row flex space-x-2">
+        <button onclick="cos()"
+          class="w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">cos</button>
+        <button onclick="log()"
+          class="w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">log</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">4</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">5</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">6</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">×</button>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="row flex space-x-2">
+        <button onclick="tan()"
+          class="w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">tan</button>
+        <button onclick="sqrt()"
+          class="w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">√</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">1</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">2</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">3</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">-</button>
+      </div>
+
+      <!-- Row 5 -->
+      <div class="row flex space-x-2">
+        <button onclick="e()" class="w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">e</button>
+        <button onclick="pow()"
+          class="w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">x^y</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">0</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">.</button>
+        <button id="eval" onclick="calculate()"
+          class="w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-blue-400 text-white hover:shadow-inner">=</button>
+        <button class="btn w-16 h-10 text-sm font-medium rounded-md shadow-lg bg-gray-100 hover:shadow-inner">+</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const screen = document.querySelector('#screen');
+    const buttons = document.querySelectorAll('.btn');
+
+    // Handle button clicks
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const value = button.innerText;
+        screen.value += value === '×' ? '*' : value === '÷' ? '/' : value;
+      });
+    });
+
+    // Functions for operations
+    const clearScreen = () => screen.value = '';
+    const backspc = () => screen.value = screen.value.slice(0, -1);
+    const calculate = () => screen.value = eval(screen.value || '0');
+    const sin = () => screen.value = Math.sin(screen.value);
+    const cos = () => screen.value = Math.cos(screen.value);
+    const tan = () => screen.value = Math.tan(screen.value);
+    const log = () => screen.value = Math.log(screen.value);
+    const sqrt = () => screen.value = Math.sqrt(screen.value);
+    const pow = () => screen.value = Math.pow(screen.value, 2);
+    const pi = () => screen.value = Math.PI;
+    const e = () => screen.value = Math.E;
+    const fact = () => {
+      let num = parseInt(screen.value);
+      screen.value = num <= 1 ? 1 : [...Array(num).keys()].reduce((a, b) => a * (b + 1), 1);
+    };
+  </script>
+
 </body>
-<script>
-    var screen = document.querySelector('#screen');
-    var btn = document.querySelectorAll('.btn');
-
-    /*============ For getting the value of btn, Here we use for loop ============*/
-    for (item of btn) {
-        item.addEventListener('click', (e) => {
-            btntext = e.target.innerText;
-
-            if (btntext == '×') {
-                btntext = '*';
-            }
-
-            if (btntext == '÷') {
-                btntext = '/';
-            }
-            screen.value += btntext;
-        });
-    }
-
-    function sin() {
-        screen.value = Math.sin(screen.value);
-    }
-
-    function cos() {
-        screen.value = Math.cos(screen.value);
-    }
-
-    function tan() {
-        screen.value = Math.tan(screen.value);
-    }
-
-    function pow() {
-        screen.value = Math.pow(screen.value, 2);
-    }
-
-    function sqrt() {
-        screen.value = Math.sqrt(screen.value, 2);
-    }
-
-    function log() {
-        screen.value = Math.log(screen.value);
-    }
-
-    function pi() {
-        screen.value = 3.14159265359;
-    }
-
-    function e() {
-        screen.value = 2.71828182846;
-    }
-
-    function fact() {
-        var i, num, f;
-        f = 1
-        num = screen.value;
-        for (i = 1; i <= num; i++) {
-            f = f * i;
-        }
-
-        i = i - 1;
-
-        screen.value = f;
-    }
-
-    function backspc() {
-        screen.value = screen.value.substr(0, screen.value.length - 1);
-    }
-</script>
 
 </html>
